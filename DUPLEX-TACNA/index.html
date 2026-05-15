@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dúplex en Venta | Tacna · Prime Grupo Inmobiliario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --dark: #0D0D0D;
+    --dark2: #161616;
+    --dark3: #1E1E1E;
+    --white: #F5F2ED;
+    --gray: #8A8A8A;
+    --border: rgba(201,168,76,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 40px;
+    background: linear-gradient(to bottom, rgba(13,13,13,0.95), transparent);
+    backdrop-filter: blur(4px);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 600;
+    letter-spacing: 0.08em; color: var(--gold);
+    text-transform: uppercase;
+  }
+  .nav-badge {
+    font-size: 11px; letter-spacing: 0.15em;
+    color: var(--gray); text-transform: uppercase;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 40px 60px;
+    position: relative;
+    overflow: hidden;
+    background: var(--dark2);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: 
+      linear-gradient(to top, rgba(13,13,13,1) 0%, rgba(13,13,13,0.5) 50%, rgba(13,13,13,0.2) 100%),
+      linear-gradient(135deg, #1a1208 0%, #0D0D0D 60%);
+  }
+  .hero-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
+    opacity: 0.55;
+    transition: opacity 0.3s;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 800px; }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--border);
+    padding: 6px 16px; margin-bottom: 24px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 7vw, 82px);
+    font-weight: 300; line-height: 1.0;
+    color: var(--white);
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .hero-title em { color: var(--gold); font-style: normal; }
+  .hero-subtitle {
+    font-size: 15px; color: var(--gray);
+    margin: 20px 0 36px;
+    letter-spacing: 0.03em; line-height: 1.6;
+    animation: fadeUp 0.8s 0.25s ease both;
+  }
+  .hero-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 42px); font-weight: 600;
+    color: var(--gold-light);
+    animation: fadeUp 0.8s 0.35s ease both;
+  }
+  .hero-price span { font-size: 14px; color: var(--gray); font-family: 'Outfit', sans-serif; font-weight: 300; margin-left: 8px; }
+  .hero-cta {
+    margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--gold); color: #0D0D0D;
+    padding: 14px 28px; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid var(--border); color: var(--white);
+    padding: 14px 28px; font-size: 13px; font-weight: 400;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    background: transparent;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--dark3);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: center; flex-wrap: wrap;
+  }
+  .stat {
+    padding: 28px 48px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+    flex: 1; min-width: 140px;
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 300; color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label { font-size: 11px; color: var(--gray); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 6px; }
+
+  /* SECTION */
+  section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px; display: block;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px); font-weight: 300;
+    line-height: 1.15; margin-bottom: 24px;
+  }
+  .section-body { color: var(--gray); line-height: 1.8; font-size: 15px; max-width: 600px; }
+  .divider { width: 40px; height: 1px; background: var(--gold); margin: 20px 0; }
+
+  /* GALLERY */
+  .gallery-section { padding: 0 0 80px; }
+  .gallery-header { padding: 0 40px; margin-bottom: 32px; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 3px;
+  }
+  .gallery-item {
+    position: relative; overflow: hidden;
+    cursor: pointer; background: var(--dark3);
+  }
+  .gallery-item:first-child {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    transition: transform 0.5s ease, opacity 0.3s;
+    min-height: 200px;
+    display: block;
+  }
+  .gallery-item:first-child img { min-height: 460px; }
+  .gallery-item:hover img { transform: scale(1.04); }
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(13,13,13,0.7) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.3s;
+    display: flex; align-items: flex-end; padding: 20px;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-label { font-size: 12px; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* FEATURES */
+  .features-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 48px;
+  }
+  .feature {
+    background: var(--dark2);
+    padding: 32px 28px;
+    transition: background 0.2s;
+  }
+  .feature:hover { background: var(--dark3); }
+  .feature-icon { font-size: 24px; margin-bottom: 14px; }
+  .feature-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 6px; letter-spacing: 0.03em; }
+  .feature-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+  /* VIDEO */
+  .video-section {
+    padding: 80px 40px;
+    background: var(--dark2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .video-inner { max-width: 1200px; margin: 0 auto; }
+  .video-placeholder {
+    width: 100%; aspect-ratio: 16/9;
+    background: var(--dark3);
+    border: 1px dashed var(--border);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 16px;
+    margin-top: 40px; cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .video-placeholder:hover { border-color: var(--gold); }
+  .play-btn {
+    width: 72px; height: 72px; border-radius: 50%;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; color: var(--gold);
+    transition: background 0.2s;
+  }
+  .video-placeholder:hover .play-btn { background: var(--gold); color: #0D0D0D; }
+  .video-note { font-size: 13px; color: var(--gray); letter-spacing: 0.05em; }
+
+  /* LEGAL */
+  .legal-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px; margin-top: 40px;
+  }
+  .legal-item {
+    border: 1px solid var(--border);
+    padding: 24px 28px; display: flex; align-items: flex-start; gap: 16px;
+  }
+  .legal-check { color: var(--gold); font-size: 18px; margin-top: 2px; flex-shrink: 0; }
+  .legal-text { font-size: 14px; color: var(--gray); line-height: 1.6; }
+  .legal-text strong { color: var(--white); font-weight: 500; display: block; margin-bottom: 4px; }
+
+  /* CTA FINAL */
+  .cta-section {
+    background: linear-gradient(135deg, #1a1208, #0D0D0D);
+    border-top: 1px solid var(--border);
+    padding: 100px 40px;
+    text-align: center;
+  }
+  .cta-inner { max-width: 640px; margin: 0 auto; }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 300; line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .cta-sub { color: var(--gray); font-size: 15px; line-height: 1.7; margin-bottom: 40px; }
+  .whatsapp-btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: #25D366; color: #fff;
+    padding: 18px 36px; font-size: 15px; font-weight: 600;
+    letter-spacing: 0.05em; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .whatsapp-btn:hover { background: #1ebe5a; transform: translateY(-3px); }
+  .whatsapp-btn svg { width: 22px; height: 22px; fill: #fff; }
+
+  /* FOOTER */
+  footer {
+    background: #080808;
+    border-top: 1px solid var(--border);
+    padding: 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600; color: var(--gold);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .footer-copy { font-size: 12px; color: var(--gray); }
+
+  /* MODAL */
+  .modal {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+  }
+  .modal.open { display: flex; }
+  .modal img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+  .modal-close {
+    position: absolute; top: 24px; right: 32px;
+    font-size: 32px; color: var(--white); cursor: pointer;
+    background: none; border: none; line-height: 1;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .hero { padding: 0 20px 50px; }
+    section { padding: 60px 20px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:first-child { grid-column: 1 / 3; }
+    .stat { padding: 20px 24px; }
+    .legal-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr 1fr; }
+    footer { padding: 24px 20px; }
+    .gallery-header { padding: 0 20px; }
+    .video-section { padding: 60px 20px; }
+    .cta-section { padding: 70px 20px; }
+  }
+  @media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item:first-child { grid-column: 1; }
+    .features-grid { grid-template-columns: 1fr; }
+    .stats-bar { flex-direction: column; }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Prime Grupo Inmobiliario</div>
+  <div class="nav-badge">Tacna · Perú</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <!-- FOTO PRINCIPAL: reemplaza "images/fachada.jpg" con el nombre de tu foto de fachada -->
+  <img class="hero-img" src="images/fachada.jpg" alt="Fachada del dúplex" onerror="this.style.opacity='0'" />
+  <div class="hero-content">
+    <div class="hero-tag">⬩ Se vende · Tacna, Perú</div>
+    <h1 class="hero-title">Dúplex en <em>zona céntrica</em> con cochera y patio exclusivo</h1>
+    <p class="hero-subtitle">Calle San José 244 · Distrito, Provincia y Departamento de Tacna<br>2 pisos · 3 dormitorios · Cochera con portón eléctrico · Patio privado</p>
+    <div class="hero-price">$125,000 <span>· precio negociable</span></div>
+    <div class="hero-cta">
+      <a href="https://wa.me/51952956002?text=Hola,%20vi%20el%20d%C3%BAplex%20en%20San%20Jos%C3%A9%20244%20y%20quiero%20más%20información"
+         class="btn-primary" target="_blank">
+        📲 Consultar por WhatsApp
+      </a>
+      <a href="#galeria" class="btn-secondary">Ver fotos ↓</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">90</div>
+    <div class="stat-label">m² construidos</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">3</div>
+    <div class="stat-label">Dormitorios</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">3</div>
+    <div class="stat-label">Baños</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">2</div>
+    <div class="stat-label">Pisos</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">~90</div>
+    <div class="stat-label">m² patio privado</div>
+  </div>
+</div>
+
+<!-- GALERÍA -->
+<div class="gallery-section" id="galeria">
+  <div class="gallery-header">
+    <span class="section-tag">⬩ Galería de fotos</span>
+    <h2 class="section-title">Conocé cada<br>espacio de la propiedad</h2>
+  </div>
+
+  <!--
+    INSTRUCCIONES PARA LAS FOTOS:
+    1. Crea una carpeta llamada "images" junto a este archivo index.html
+    2. Copia todas tus fotos dentro de esa carpeta
+    3. Renombralas así (o cambia los nombres abajo):
+       - fachada.jpg    → foto exterior de la propiedad
+       - sala.jpg       → sala-comedor / living room
+       - cocina.jpg     → cocina con reposteros
+       - escalera.jpg   → escalera interior
+       - cochera.jpg    → cochera con portón
+       - dormitorio1.jpg → dormitorio principal
+       - dormitorio2.jpg → segundo dormitorio
+       - dormitorio3.jpg → tercer dormitorio
+       - hall.jpg       → hall/pasillo segundo piso
+  -->
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick="openModal('images/sala.jpg')">
+      <img src="images/sala.jpg" alt="Sala comedor" onerror="this.src=''; this.parentElement.style.background='#1E1E1E'"/>
+      <div class="gallery-overlay"><span class="gallery-label">Sala · Comedor</span></div>
+    </div>
+    <div class="gallery-item" onclick="openModal('images/cocina.jpg')">
+      <img src="images/cocina.jpg" alt="Cocina" onerror="this.src=''; this.parentElement.style.background='#1E1E1E'"/>
+      <div class="gallery-overlay"><span class="gallery-label">Cocina</span></div>
+    </div>
+    <div class="gallery-item" onclick="openModal('images/cochera.jpg')">
+      <img src="images/cochera.jpg" alt="Cochera" onerror="this.src=''; this.parentElement.style.background='#1E1E1E'"/>
+      <div class="gallery-overlay"><span class="gallery-label">Cochera</span></div>
+    </div>
+    <div class="gallery-item" onclick="openModal('images/escalera.jpg')">
+      <img src="images/escalera.jpg" alt="Escalera" onerror="this.src=''; this.parentElement.style.background='#1E1E1E'"/>
+      <div class="gallery-overlay"><span class="gallery-label">Escalera</span></div>
+    </div>
+    <div class="gallery-item" onclick="openModal('images/dormitorio1.jpg')">
+      <img src="images/dormitorio1.jpg" alt="Dormitorio principal" onerror="this.src=''; this.parentElement.style.background='#1E1E1E'"/>
+      <div class="gallery-overlay"><span class="gallery-label">Dormitorio principal</span></div>
+    </div>
+    <div class="gallery-item" onclick="openModal('images/dormitorio2.jpg')">
+      <img src="images/dormitorio2.jpg" alt="Dormitorio 2" onerror="this.src=''; this.parentElement.style.background='#1E1E1E'"/>
+      <div class="gallery-overlay"><span class="gallery-label">Dormitorio 2</span></div>
+    </div>
+    <div class="gallery-item" onclick="openModal('images/dormitorio3.jpg')">
+      <img src="images/dormitorio3.jpg" alt="Dormitorio 3" onerror="this.src=''; this.parentElement.style.background='#1E1E1E'"/>
+      <div class="gallery-overlay"><span class="gallery-label">Dormitorio 3</span></div>
+    </div>
+    <div class="gallery-item" onclick="openModal('images/hall.jpg')">
+      <img src="images/hall.jpg" alt="Hall" onerror="this.src=''; this.parentElement.style.background='#1E1E1E'"/>
+      <div class="gallery-overlay"><span class="gallery-label">Hall · 2do piso</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CARACTERÍSTICAS -->
+<section>
+  <span class="section-tag">⬩ Características</span>
+  <h2 class="section-title">Todo lo que incluye<br>esta propiedad</h2>
+  <div class="divider"></div>
+  <p class="section-body">Un dúplex completo en zona céntrica de Tacna, con todos los servicios instalados y distribución pensada para el confort familiar.</p>
+
+  <div class="features-grid">
+    <div class="feature">
+      <div class="feature-icon">🏠</div>
+      <div class="feature-title">2 Pisos independientes</div>
+      <div class="feature-desc">Primer y segundo piso con distribución funcional para toda la familia.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🛏️</div>
+      <div class="feature-title">3 Dormitorios con closet</div>
+      <div class="feature-desc">Closets empotrados de madera en todos los dormitorios del segundo piso.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🚿</div>
+      <div class="feature-title">3 Baños completos</div>
+      <div class="feature-desc">Sanitarios de loza vitrificada blanca con zócalos de cerámico.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🍳</div>
+      <div class="feature-title">Cocina equipada</div>
+      <div class="feature-desc">Reposteros altos y bajos de madera, mesada de granito y azulejos.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🚗</div>
+      <div class="feature-title">Cochera con portón eléctrico</div>
+      <div class="feature-desc">Acceso vehicular privado con control remoto incluido.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🌿</div>
+      <div class="feature-title">Patio trasero exclusivo</div>
+      <div class="feature-desc">Espacio libre privado de aproximadamente 90 m² al fondo de la propiedad.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📐</div>
+      <div class="feature-title">Estudio independiente</div>
+      <div class="feature-desc">Ambiente adicional ideal para trabajo desde casa u oficina.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💧</div>
+      <div class="feature-title">Todos los servicios</div>
+      <div class="feature-desc">Agua, desagüe, energía eléctrica y pistas asfaltadas en la zona.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🧺</div>
+      <div class="feature-title">Patio · Lavandería</div>
+      <div class="feature-desc">Espacio de servicio propio con área de lavado en primer piso.</div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<div class="video-section">
+  <div class="video-inner">
+    <span class="section-tag">⬩ Recorrido virtual</span>
+    <h2 class="section-title">Mirá la propiedad<br>desde donde estés</h2>
+
+    <!--
+      PARA INSERTAR TU VIDEO:
+      Opción A · YouTube:
+        1. Subí tu video a YouTube
+        2. Copiá el ID del video (ej: dQw4w9WgXcQ)
+        3. Reemplazá la línea del iframe con:
+           <iframe width="100%" height="100%" src="https://www.youtube.com/embed/TU_ID_AQUI" frameborder="0" allowfullscreen></iframe>
+        4. Borrá el div "video-placeholder" y dejá solo el iframe dentro de un div con style="aspect-ratio:16/9"
+
+      Opción B · Google Drive:
+        1. Subí el video a Drive, hacelo público
+        2. Copiá el link de compartir
+        3. Reemplazá igual que en YouTube pero con el link de Drive
+    -->
+    <div class="video-placeholder" onclick="alert('Próximamente: video de recorrido de la propiedad')">
+      <div class="play-btn">▶</div>
+      <div class="video-note">Video de recorrido · Próximamente disponible</div>
+    </div>
+  </div>
+</div>
+
+<!-- LEGAL -->
+<section>
+  <span class="section-tag">⬩ Respaldo legal</span>
+  <h2 class="section-title">Propiedad documentada<br>y sin problemas</h2>
+  <div class="divider"></div>
+  <div class="legal-grid">
+    <div class="legal-item">
+      <div class="legal-check">✦</div>
+      <div class="legal-text">
+        <strong>Inscrita en Registros Públicos</strong>
+        Partida N° 11179885 del Registro de Predios de Tacna. Documentación en regla.
+      </div>
+    </div>
+    <div class="legal-item">
+      <div class="legal-check">✦</div>
+      <div class="legal-text">
+        <strong>Libre de gravámenes</strong>
+        Sin hipotecas, embargos ni cargas. Lista para transferencia inmediata.
+      </div>
+    </div>
+    <div class="legal-item">
+      <div class="legal-check">✦</div>
+      <div class="legal-text">
+        <strong>Declaratoria de Fábrica y Reglamento Interno</strong>
+        Documentación técnica completa y vigente.
+      </div>
+    </div>
+    <div class="legal-item">
+      <div class="legal-check">✦</div>
+      <div class="legal-text">
+        <strong>Tasación oficial</strong>
+        Valuación comercial N°34-2025 realizada por perito certificado SBS.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-section">
+  <div class="cta-inner">
+    <h2 class="cta-title">¿Te interesa esta propiedad?</h2>
+    <p class="cta-sub">Coordinamos tu visita sin compromiso. Respondemos en menos de 15 minutos en horario hábil.<br><br>Precio conversable · Asesoramiento personalizado.</p>
+    <a href="https://wa.me/51952956002?text=Hola,%20vi%20el%20d%C3%BAplex%20en%20San%20Jos%C3%A9%20244%20y%20quiero%20coordinar%20una%20visita"
+       class="whatsapp-btn" target="_blank">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Escribinos por WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Prime Grupo Inmobiliario</div>
+  <div class="footer-copy">Tacna, Perú · +51 952 956 002</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal()">
+  <button class="modal-close" onclick="closeModal()">×</button>
+  <img id="modal-img" src="" alt="Foto ampliada" />
+</div>
+
+<script>
+  function openModal(src) {
+    document.getElementById('modal-img').src = src;
+    document.getElementById('modal').classList.add('open');
+  }
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+
+</body>
+</html>
